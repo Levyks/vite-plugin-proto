@@ -1,0 +1,30 @@
+{
+  "name": "vite-plugin-proto",
+  "version": "0.0.1",
+  "description": "Plugin to allow importing .proto file as json objects.",
+  "author": "Levy Barbosa <marcio.levy20@gmail.com>",
+  "license": "GPL-3.0",
+  "repository": "Levyks/vite-plugin-proto",
+  "main": "dist/plugin.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p .",
+    "prepare": "npm run build"
+  },
+  "peerDependencies": {
+    "vite": ">2.0.0-0"
+  },
+  "dependencies": {
+    "protobufjs": "^7.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.13",
+    "typescript": "^5.0.4"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin"
+  ]
+}
