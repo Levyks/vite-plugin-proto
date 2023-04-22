@@ -7,7 +7,7 @@ type PluginConfig = {
   parseOptions?: IParseOptions;
 }
 
-export default (config: PluginConfig = {}) => {
+function proto(config: PluginConfig = {}) {
   
   const basePath = config.basePath || './';
   const resolvePath = config.resolvePath || 
@@ -31,3 +31,6 @@ export default (config: PluginConfig = {}) => {
     }
   }
 }
+
+export default proto;
+module.exports = proto;
