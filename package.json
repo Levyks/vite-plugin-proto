@@ -1,11 +1,12 @@
 {
   "name": "vite-plugin-proto",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Plugin to allow importing .proto file as json objects.",
   "author": "Levy Barbosa <marcio.levy20@gmail.com>",
   "license": "GPL-3.0",
   "repository": "Levyks/vite-plugin-proto",
   "main": "dist/plugin.js",
+  "type": "module",
   "files": [
     "dist"
   ],

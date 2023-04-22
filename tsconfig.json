@@ -1,14 +1,17 @@
 {
-  "include": ["src"],
   "compilerOptions": {
-    "declaration": true,
+    "target": "ES6",
+    "module": "ES6",
     "esModuleInterop": true,
-    "module": "commonjs",
     "moduleResolution": "node",
-    "noUnusedLocals": true,
-    "outDir": "dist",
+    "resolveJsonModule": true,
     "strict": true,
-    "sourceMap": true,
-    "target": "esnext"
-  }
+    "allowJs": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "outDir": "dist",
+  },
+  "include": ["src"]  
 }

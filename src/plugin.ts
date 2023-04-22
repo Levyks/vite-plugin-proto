@@ -1,6 +1,5 @@
 import path from 'path';
-import { Root, type IParseOptions } from 'protobufjs';
-import type { PluginOption } from 'vite';
+import protobuf, { type IParseOptions } from 'protobufjs';
 
 type PluginConfig = {
   basePath?: string;
@@ -8,7 +7,7 @@ type PluginConfig = {
   parseOptions?: IParseOptions;
 }
 
-export const proto = (config: PluginConfig = {}): PluginOption => {
+export default (config: PluginConfig = {}) => {
   
   const basePath = config.basePath || './';
   const resolvePath = config.resolvePath || 
@@ -16,10 +15,10 @@ export const proto = (config: PluginConfig = {}): PluginOption => {
   
   return {
     name: 'vite-plugin-proto',
-    transform: async (_, id) => {
+    transform: async (_code: string, id: string) => {
       if (!id.endsWith(".proto")) return;
 
-      const root = new Root();
+      const root = new protobuf.Root();
       root.resolvePath = resolvePath;
       await root.load(id, config.parseOptions);
 
@@ -27,6 +26,7 @@ export const proto = (config: PluginConfig = {}): PluginOption => {
 
       return {
         code: `export default ${json};`,
+        map: null,
       }
     }
   }

@@ -1,21 +1,35 @@
-# {{name}}
+# vite-plugin-proto
 
-[![npm](https://img.shields.io/npm/v/{{name}}.svg)](https://www.npmjs.com/package/{{name}})
-[![Code style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/alecdotbiz)
+[![npm](https://img.shields.io/npm/v/vite-plugin-proto.svg)](https://www.npmjs.com/package/vite-plugin-proto)
 
-> {{description}}
+> Allows you to import proto files as a parsed object directly in your code, uses protobufjs under the hood.
 
-&nbsp;
+```ts
+import grpc from '@grpc/grpc-js';
+import protoLoader from '@grpc/proto-loader';
+
+import greeterNamespace from './proto/greeter.proto';
+
+const packageDefinition = protoLoader.fromJSON(greeterNamespace);
+const packageObject = grpc.loadPackageDefinition(packageDefinition);
+```
 
 ### Usage
 
 ```ts
-import {{camelize ident}} from '{{name}}'
+import proto from 'vite-plugin-proto';
 
 export default {
   plugins: [
-    {{camelize ident}}(),
+    proto(),
   ]
 }
 ```
+
+### Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| basePath | `string` | `./` | The base path that will be used to resolve other .proto files in `import` statements, useless if you define `resolvePath` |
+| resolvePath | `(origin: string, target: string) => string` | `(_, target) => path.resolve(basePath, target)` | A function that will be used to resolve other .proto files in `import` statements |
+| parseOptions | `import('protobufjs').IParseOptions` | `undefined` | Options that will be passed to protobufjs's `load` method |
